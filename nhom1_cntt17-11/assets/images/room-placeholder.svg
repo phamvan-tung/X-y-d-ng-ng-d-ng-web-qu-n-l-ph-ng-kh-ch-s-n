@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 480">
+<rect width="800" height="480" fill="#f3f7fb"/>
+<g fill="#cfe8ff">
+  <rect x="40" y="60" width="720" height="300" rx="12"/>
+</g>
+<g fill="#9fcfff" font-family="Poppins, sans-serif" font-size="28">
+  <text x="80" y="250">Ảnh minh họa phòng</text>
+</g>
+</svg>

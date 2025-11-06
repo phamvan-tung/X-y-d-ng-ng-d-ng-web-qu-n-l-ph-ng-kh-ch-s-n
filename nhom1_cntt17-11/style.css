@@ -1,0 +1,352 @@
+/* =========================================
+   1. GLOBAL & BODY STYLES
+   ========================================= */
+:root {
+    --color-primary: #1a5e37; /* Xanh resort đậm */
+    --color-accent: #3498db; /* Xanh dương hành động */
+    --color-bg-light: #f8f9fa; /* Nền rất nhẹ */
+    --color-shadow: rgba(0, 0, 0, 0.05);
+}
+
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    background-color: var(--color-bg-light); 
+    min-height: 100vh;
+    display: flex; 
+    flex-direction: column;
+}
+
+main {
+    max-width: 1300px; 
+    margin: 30px auto;
+    padding: 0 20px;
+    width: 100%;
+    flex-grow: 1; 
+}
+
+/* UTILITY CLASSES */
+.btn {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: white;
+    text-decoration: none;
+    border-radius: 6px; 
+    padding: 10px 18px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.95em;
+    border: none;
+    transition: background-color 0.3s, transform 0.1s, box-shadow 0.3s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================================
+   2. LOGIN PAGE STYLES (index.php)
+   ========================================= */
+/* Thay đổi style body cho trang login (chỉ áp dụng khi có class .overlay) */
+body:has(.overlay) {
+    /* Đảm bảo đường dẫn ảnh nền là đúng. Nếu ảnh nằm trong /assets/images/resort-bg.jpg */
+    background: url('assets/images/resort-bg.jpg') no-repeat center center/cover; 
+    height: 100vh;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    color: #333; 
+}
+
+.overlay {
+    background: rgba(255, 255, 255, 0.98); 
+    padding: 40px;
+    border-radius: 12px; 
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.1); 
+    text-align: center;
+    border: 1px solid #eee; 
+}
+
+.overlay header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5em; 
+    color: var(--color-primary); 
+}
+
+.overlay h2 {
+    font-family: 'Playfair Display', serif;
+    color: var(--color-primary);
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-weight: 600;
+    font-size: 1.8em;
+}
+
+.overlay label {
+    display: block;
+    text-align: left;
+    font-weight: 500;
+    margin-top: 15px;
+    color: #333;
+    font-size: 0.95em;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%; 
+    box-sizing: border-box; 
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    background-color: white;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="text"]:focus, input[type="password"]:focus {
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2); 
+    outline: none;
+}
+
+.overlay button[type="submit"] {
+    margin-top: 25px;
+    width: 100%;
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.05em;
+    transition: background-color 0.3s, transform 0.1s;
+}
+
+.overlay button[type="submit"]:hover {
+    background-color: #164929;
+    transform: translateY(-1px);
+}
+
+.overlay .error {
+    color: #c0392b;
+    padding: 10px;
+    background-color: #fcecec;
+    border-left: 4px solid #c0392b;
+    border-radius: 4px;
+    font-weight: 500;
+    text-align: left;
+    margin-top: 15px;
+}
+
+/* =========================================
+   3. DASHBOARD (Header, Footer, Cards, Table)
+   ========================================= */
+
+/* HEADER/NAVIGATION BAR */
+nav {
+    background-color: var(--color-primary); 
+    padding: 15px 30px;
+    color: white;
+    box-shadow: 0 4px 8px var(--color-shadow);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h1 {
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s, border-bottom 0.3s;
+    padding: 5px 0;
+    border-bottom: 2px solid transparent;
+}
+
+.nav-links li a:hover, .nav-links li.active a {
+    color: #b3e6c3;
+    border-bottom: 2px solid #b3e6c3;
+}
+
+.user-info {
+    font-weight: 500;
+    margin-right: 15px;
+    font-size: 0.9em;
+}
+
+/* SECTION STYLES */
+section {
+    background: #fff;
+    padding: 30px;
+    border-radius: 8px; 
+    box-shadow: 0 5px 15px var(--color-shadow); 
+    margin-bottom: 30px;
+}
+
+section h2, section h3 {
+    font-family: 'Poppins', sans-serif;
+    color: #333;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    margin-top: 0;
+}
+
+/* HERO SECTION (home.php) */
+.hero {
+    background-color: white; 
+    border-left: 4px solid var(--color-primary); 
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.hero h2 {
+    color: var(--color-primary);
+    font-size: 2.2em;
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+/* CARDS SECTION (Thẻ thống kê) */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: 20px;
+    background: none;
+    box-shadow: none;
+}
+
+.card {
+    background: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--color-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #e9ecef; 
+}
+
+.card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.1);
+}
+
+/* Dashboard Stats Cards */
+.dashboard-stats .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 180px;
+    text-align: center;
+    padding: 20px;
+}
+
+.dashboard-stats .card h3 {
+    font-size: 3em; 
+    font-weight: 700;
+    margin-bottom: 5px;
+    line-height: 1;
+    border-bottom: none;
+}
+
+.dashboard-stats .card p {
+    font-size: 1.1em;
+    color: #444;
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+/* TABLE STYLES (Chuyên nghiệp) */
+.table {
+    width: 100%;
+    border-collapse: separate; 
+    border-spacing: 0;
+    margin-top: 20px;
+    font-size: 0.95em;
+    overflow: hidden; 
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.table thead th {
+    background-color: #f1f3f5; 
+    color: #333;
+    text-align: left;
+    padding: 15px;
+    font-weight: 600;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.table tbody td {
+    padding: 15px;
+    border-bottom: 1px solid #e9ecef;
+    vertical-align: middle;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #fcfcfc;
+}
+
+.table tbody tr:hover {
+    background-color: #e6f4ff; 
+}
+
+/* Status Badges */
+.status-badge {
+    font-weight: 600; 
+    color: white; 
+    padding: 4px 10px; 
+    border-radius: 12px; 
+    font-size: 0.8em; 
+    display: inline-block;
+    min-width: 80px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Màu sắc Trạng thái */
+.status-badge.available { background-color: #28a745; } 
+.status-badge.booked { background-color: #ffc107; color: #333; } 
+.status-badge.maintenance { background-color: #6c757d; } 
+.status-badge.pending { background-color: #fd7e14; } 
+.status-badge.confirmed { background-color: #17a2b8; } 
+.status-badge.completed { background-color: var(--color-primary); } 
+.status-badge.cancelled { background-color: #dc3545; } 
+
+/* FOOTER */
+footer.main-footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #343a40; 
+    color: #adb5bd;
+    font-size: 0.85em;
+    margin-top: 40px; 
+    width: 100%;
+}
